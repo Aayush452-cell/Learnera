@@ -1,0 +1,65 @@
+{% extends 'learnera/basic.html' %}
+{% load static %}
+{% block css %}
+
+    .des{
+     width : 400px;
+     height : 225px;
+    }
+    @media (max-width: 991px) {
+    .des{
+     max-width : 280px;
+     height : 225px;
+    }
+    }
+
+{% endblock %}
+
+{% block body %}
+    <div class="container py-4">
+
+    <div class="p-2 mb-3 bg-dark rounded-3">
+      <div class="container-fluid py-5">
+          <div class="row">
+          <div class="col-md-8">
+        <h1 class="display-5 fw-bold text-white">{{ course.category }}</h1>
+        <p class="col-md-8 fs-4 text-white">{{ course.sort_desc | safe }}</p>
+        <button class="btn btn-outline-secondary" style="background-color:#e1bc45;" id="cr{{ course.id }}" type="button">Add to Cart</button>
+            <button class="btn btn-outline-secondary" style="background-color:#e1bc45; "type="button">Buy Now</button>
+          </div>
+          <div class="col-md-4">
+            <iframe class="des" src="{{ course.video_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+              </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-black rounded-3" style="background-color: #fbfbf8;">
+          <p>{{ course.desc | safe }}</p>
+          <button class="btn btn-outline-light" type="button">Example button</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light bg-white border rounded-3">
+          <h2>Add borders</h2>
+          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+          <button class="btn btn-outline-secondary" type="button">Add to Cart</button>
+            <button class="btn btn-outline-secondary" type="button">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      © 2021
+    </footer>
+  </div>
+
+{% endblock %}
+
+
+{% block js %}
+
+
+{% endblock %}

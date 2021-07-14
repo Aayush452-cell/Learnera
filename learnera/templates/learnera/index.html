@@ -1,0 +1,250 @@
+{% extends 'learnera/basic.html' %}
+{% load static %}
+{% block css %}
+    .dsa {
+    height: 544px;
+    width: 544px;
+    }
+
+    .jumbotron {
+    min-height: 80px;
+    padding-top: 20%;
+    padding-bottom: 15%;
+    }
+
+    .jumbotron2 {
+    min-height: 80px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    }
+
+    .mid {
+    background-image: url("{% static 'learnera/a1.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+
+    }
+
+    .ds {
+    width: 100%;
+    height: 444px;
+    border: 1px solid rgb(230 221 221 / 13%);
+    }
+
+
+    .card-title-text-img {
+    padding-left: 38%
+    }
+
+    .card-title-text-img-button {
+    padding-left: 38%;
+    }
+
+    .card-title-text-container {
+    padding-bottom: 10%
+    }
+
+
+
+    .highlight-word {
+    position: relative;
+    z-index: 0;
+    /* prevent the highlight from breaking since it is horizontal   */
+    white-space: nowrap;
+    }
+
+    .highlight-word:before {
+    content: '';
+    background: url(https://cdn2.hubspot.net/hubfs/1951809/text-highlight.png?t=1542708765973) no-repeat center center;
+    background-size: 100% auto;
+    width: 108%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+    transform: translate(-3%, 0);
+    }
+
+
+
+
+    /* ============ mobile view ============ */
+    @media(max-width: 991px) {
+
+    .card-title-text-container {
+    padding-bottom: 70%
+    }
+
+    .navbar-brand img {
+    height: auto;
+    width: auto;
+    max-height: 41px;
+    max-width: 79px;
+    }
+
+    .dsa {
+    height: 344px;
+    width: 344px;
+    }
+
+
+    .card-title-text-img-button {
+    padding-left: 9%;
+    padding-top: 9%;
+    }
+
+    .card-title-text-img {
+    padding-left: 10%
+    }
+
+    .ds {
+    width: 100%;
+    height: 444px;
+    }
+
+    .mid {
+    background-image: url("{% static 'learnera/a1.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    }
+    }
+
+{% endblock %}
+
+{% block body %}
+
+    <section class="jumbotron text-center mid">
+        <div class="container">
+            <div class="tst">
+                <h1>Learning does not have boundaries!</h1>
+                <p class="lead text-align">Join us to be a part of change.</p>
+                <p>
+            </div>
+            <a href="#" class="btn btn-primary my-2">For Students</a>
+            <a href="#" class="btn btn-secondary my-2">For Educators</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="jumbotron2" style="background-color:transparent">
+        <div class="container text-center text-lg-left">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-4">The fast & visual way
+                        to <span class="highlight-word">understand your users</span></h1>
+                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                        attention to
+                        featured content or information.</p>
+                    <span class="text-center d-inline-block">
+            <a class="btn btn-primary btn-lg w-100" href="#" role="button">Try it free</a>
+            <p class="text-muted">No credit card required</p>
+          </span>
+
+                </div>
+                <div class="col-lg-4 align-items-center d-flex">
+                    <img src="{% static 'learnera/IN_HERO_C.png' %}" alt="" class="img-fluid">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card-group">
+            <div class="card" style="border: 1px solid rgb(230 221 221 / 13%);">
+                <img src="{% static 'learnera/Icon-Learn.png' %}" class="card-img-top"
+                     style="width: 60%; padding-left: 37%;">
+                <div class="card-body">
+                    <h5 class="card-title">Gain expertise in the latest skills</h5>
+                    <p class="card-text">with courses and Specializations in computer science, humanities, and more</p>
+                </div>
+            </div>
+            <div class="card" style="border: 1px solid rgb(230 221 221 / 13%);">
+                <img src="{% static 'learnera/Icon-Get-Ready.png' %}" class="card-img-top" alt="..."
+                     style="width: 60%; padding-left: 37%;">
+                <div class="card-body">
+                    <h5 class="card-title">Learn job-ready career skills</h5>
+                    <p class="card-text">in artificial intelligence, machine learning, data science, cloud engineering,
+                        and
+                        more
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="border: 1px solid rgb(230 221 221 / 13%);">
+                <img src="{% static 'learnera/Icon-Earn-Degree.png' %}" class="card-img-top" alt="..."
+                     style="width: 60%; padding-left: 37%;">
+                <div class="card-body">
+                    <h5 class="card-title">Earn a degree</h5>
+                    <p class="card-text">from the world's leading universities in business, computer science, and
+                        more</p>
+                </div>
+            </div>
+
+            <div class="card" style="border: 1px solid rgb(230 221 221 / 13%);">
+                <img src="{% static 'learnera/Icon-Earn-Degree.png' %}" class="card-img-top" alt="..."
+                     style="width: 60%; padding-left: 37%;">
+                <div class="card-body">
+                    <h5 class="card-title">Earn a degree</h5>
+                    <p class="card-text">from the world's leading universities in business, computer science, and
+                        more</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container card-title-text-container" style="padding-top: 5%">
+        <div class="card mb-3 ds">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{% static 'learnera/ThreeImages-Marketing.png' %}" class="card-img dsa" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="card-title-text-img">
+                            <h2 class="card-title" style="padding-top: 10%;">World-class learning for you</h2>
+                            <p class="card-text" style="font-size: large;">Pursue a promotion, a raise, or switch
+                                careers. 89% of learners who have taken a course report career benefits.</p>
+                        </div>
+                        <div class="card-title-text-img-button">
+                            <button type="button" class="btn btn-primary btn-lg">Join for Free</button>
+                            <button type="button" class="btn btn-outline-primary btn-lg">Try Lernerra for business
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron2" style="background-color:rgb(235, 243, 255);">
+        <div class="container text-center text-lg-left">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-4">Boost Your Career</h1>
+                    <h2>Find a top degree that fits your life</h2>
+                    <p class="lead">Earn your bachelor’s or master’s degree online from a leading university for much
+                        less
+                        than
+                        similar on-campus programs. Learn from the same professors and graduate with the same credential
+                        as
+                        students
+                        who study on-campus.</p>
+                    <span class="text-center d-inline-block">
+            <a class="btn btn-primary btn-lg w-100" href="#" role="button">Learn More</a>
+          </span>
+
+                </div>
+                <div class="col-lg-4 align-items-center d-flex">
+                    <img src="{% static 'learnera/img.png' %}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
