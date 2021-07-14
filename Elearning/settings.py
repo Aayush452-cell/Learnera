@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&y-v6(1la3fi20xy50-o7ylilzw-yx4@8)oxkxkgt*xh47*kq3'
+SECRET_KEY = '#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -165,8 +165,3 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 LOGIN_REDIRECT_URL = 'home'
-
-#client id
-#1052152135344-8if9ehmprt1e8bses9bs7f5droadgoq4.apps.googleusercontent.com
-#client secret
-#5eitLmytd5fP9eEdYhzCSxLm
