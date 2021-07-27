@@ -165,5 +165,5 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-razorpay_id = "rzp_test_cr2s5H09JEA7kT"
-razorpay_account_id = "k56k4nryNd6oDuY4oJ9TxyqP"
+razorpay_id = "id"
+razorpay_account_id = "account_id"
