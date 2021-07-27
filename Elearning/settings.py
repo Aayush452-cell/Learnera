@@ -133,8 +133,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = "/media/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-'/var/www/static/',
-
 ]
 
 
@@ -165,3 +163,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+razorpay_id = "rzp_test_cr2s5H09JEA7kT"
+razorpay_account_id = "k56k4nryNd6oDuY4oJ9TxyqP"

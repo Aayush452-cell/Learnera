@@ -1,10 +1,48 @@
 {% extends 'learnera/basic.html' %}
 {% load static %}
 {% block css %}
+     @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
     .dsa {
     height: 544px;
     width: 544px;
     }
+
+    @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+
+ .container-fluid-hello {
+     overflow: hidden;
+     margin-top: 0;
+     background: #262626;
+     color: #627482 !important;
+     margin-bottom: 0;
+     padding-bottom: 0
+ }
+
+ small {
+     font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ .bold-text {
+     color: #989c9e !important
+ }
+
+ .mt-55 {
+     margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ h3 {
+     font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ .social {
+     font-size: 21px !important
+ }
+
+ .rights {
+     font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
+ }
 
     .jumbotron {
     min-height: 80px;
@@ -122,7 +160,7 @@
                 <p class="lead text-align">Join us to be a part of change.</p>
                 <p>
             </div>
-            <a href="#" class="btn btn-primary my-2">For Students</a>
+            <a href="/learnera/allcourses/" class="btn btn-primary my-2">For Students</a>
             <a href="#" class="btn btn-secondary my-2">For Educators</a>
             </p>
         </div>
@@ -139,7 +177,7 @@
                         attention to
                         featured content or information.</p>
                     <span class="text-center d-inline-block">
-            <a class="btn btn-primary btn-lg w-100" href="#" role="button">Try it free</a>
+            <a class="btn btn-primary btn-lg w-100" href="/learnera/allcourses/" role="button">Try it free</a>
             <p class="text-muted">No credit card required</p>
           </span>
 
@@ -235,7 +273,7 @@
                         students
                         who study on-campus.</p>
                     <span class="text-center d-inline-block">
-            <a class="btn btn-primary btn-lg w-100" href="#" role="button">Learn More</a>
+            <a class="btn btn-primary btn-lg w-100" href="/learnera/about/" role="button">Learn More</a>
           </span>
 
                 </div>
@@ -245,6 +283,42 @@
             </div>
         </div>
     </div>
+
+
+    <div class="container-fluid container-fluid-hello  pb-0 mb-0 justify-content-center text-light ">
+     <footer>
+         <div class="row my-5 justify-content-center py-5">
+             <div class="col-11">
+                 <div class="row ">
+                     <div class="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a">
+                         <h3 class="text-muted mb-md-0 mb-5 bold-text">Learnera</h3>
+                     </div>
+                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
+                         <h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
+                         <ul class="list-unstyled">
+                             <li>Home</li>
+                             <li>About</li>
+                             <li>Portfolio</li>
+                         </ul>
+                     </div>
+                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
+                         <h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>ADDRESS</b></h6>
+                         <p class="mb-1">605, RATAN ICON BUILDING</p>
+                         <p>SEAWOODS SECTOR</p>
+                     </div>
+                 </div>
+                 <div class="row ">
+                     <div class="col-xl-8 col-md-4 col-sm-4 col-auto my-md-0 mt-5 order-sm-1 order-3 align-self-end">
+                         <p class="social text-muted mb-0 pb-0 bold-text"> <span class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-linkedin-square" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-twitter" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-instagram" aria-hidden="true"></i></span> </p><small class="rights"><span>&#174;</span> Learnera All Rights Reserved.</small>
+                     </div>
+                     <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
+                         <h6 class="mt-55 mt-2 text-muted bold-text"><b>Aayush Singh</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> aayushiiitcse1@gmail.com</small>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </footer>
+ </div>
 
 
 {% endblock %}

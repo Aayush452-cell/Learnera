@@ -5,6 +5,32 @@
 {% endblock %}
 
 {% block css %}
+
+    .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+    .nav-scroller .nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    color: rgba(255, 255, 255, .75);
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+    .shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
     .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -22,68 +48,36 @@
 
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active Dashboard" aria-current="page" href="#" id="dash">
+    <div class="nav-scroller bg-dark shadow-sm">
+      <nav class="nav nav-underline">
+        <a class="nav-link active Dashboard" aria-current="page" href="#" id="dash">
                                 <span data-feather="home"></span>
                                 Dashboard
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link order" href="#">
+        <a class="nav-link order" href="#">
                                 <span data-feather="file"></span>
                                 Orders
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link Publishtions" href="#">
+        <a class="nav-link Publishtions" href="#">
                                 <span data-feather="shopping-cart"></span>
                                 Publishtions
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link Earnings" href="#">
+        <a class="nav-link Earnings" href="#">
                                 <span data-feather="users"></span>
                                 Your Earnings
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link Publish" href="#">
+        <a class="nav-link Publish" href="#">
                                 <span data-feather="bar-chart-2"></span>
                                 Publish Course
                             </a>
-                        </li>
-                    </ul>
 
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
-                        <a class="link-secondary" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Current month
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Last quarter
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+      </nav>
+    </div>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="main-content"
-                  style="background-image: url('{% static 'learnera/profile_back.jpg' %}'); background-size: cover;">
+
+
+
+            <main role="main" class="container" id="main-content">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2 my-4" id="HeadPage">Profile</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
@@ -98,106 +92,260 @@
                     </div>
                 </div>
 
-                <div class="col-11 py-5 my-5 d-flex justify-content-center">
-                    <img src="{{ user.socialaccount_set.all.0.extra_data.picture }}"
-                         style="height:150px; border-radius: 50%; border: 10px solid #FEDE00;">
-                </div>
+                <div id="content">
+                    <div class="col-11 py-5 my-5 d-flex justify-content-center content1">
+                        <img src="{{ user.socialaccount_set.all.0.extra_data.picture }}"
+                             style="height:150px; border-radius: 50%; border: 10px solid #FEDE00;">
+                    </div>
 
 
-                <div class="col-11 py-5 my-5 d-flex justify-content-center">
-                <h1>{{ user.socialaccount_set.all.0.extra_data.name }}</h1>
+                    <div class="col-11 py-5 my-5 d-flex justify-content-center content2">
+                        <h1>{{ user.socialaccount_set.all.0.extra_data.name }}</h1>
+                    </div>
                 </div>
                 <hr>
             </main>
-        </div>
-    </div>
+
 {% endblock %}
 
 <script>
-{% block js %}
-        function changeContent(){
+    {% block js %}
+
+        function changeContentdash() {
             $.ajax({
-                type:'get',
-                success:function(reponse){
-                    $("#main-content").css('background-image', 'none');
+                type: 'get',
+                success: function (reponse) {
                     $(".nav-link").removeClass("active");
-                    $(".order").addClass("active");
+                    $(".Dashboard").addClass("active");
+                    $("#content").empty();
 
-                    document.getElementById("HeadPage").innerHTML= 'Courses You have bought !' ;
+                    document.getElementById("HeadPage").innerHTML = 'Your Profile !';
 
+                    mystr = `<div class="col-11 py-5 my-5 d-flex justify-content-center content1">
+                        <img src="{{ user.socialaccount_set.all.0.extra_data.picture }}"
+                             style="height:150px; border-radius: 50%; border: 10px solid #FEDE00;">
+                    </div>
+
+
+                    <div class="col-11 py-5 my-5 d-flex justify-content-center content2">
+                        <h1>{{ user.socialaccount_set.all.0.extra_data.name }}</h1>
+                    </div>
+`
+                    $("#content").append(mystr);
 
                 }
             });
         }
 
-        $('.order').click(function (event){
+        $('.Dashboard').click(function (event) {
+            event.preventDefault();
+            changeContentdash();
+        });
+
+
+        function changeContent() {
+            $.ajax({
+                type: 'get',
+                success: function (reponse) {
+                    $("#main-content").css('background-image', 'none');
+                    $(".nav-link").removeClass("active");
+                    $(".order").addClass("active");
+                    $("#content").empty();
+
+                    document.getElementById("HeadPage").innerHTML = 'Courses You have bought !';
+
+                    mystr = `<table class="table" id='items'>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Order Detail</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead><tbody>
+`
+                    $("#content").append(mystr);
+
+                    {% for i in order %}
+                        mystr = `
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ i.items_json }}</td>
+      <td>{{ i.amount }}</td>
+    </tr>`
+                        $('#items').append(mystr);
+                    {% endfor %}
+
+
+                    mystr = '</tbody></table>'
+                    $("#content").append(mystr);
+                }
+            });
+        }
+
+        $('.order').click(function (event) {
             event.preventDefault();
             changeContent();
         });
 
 
-        function changeContentPublishtions(){
+        function changeContentPublishtions() {
             $.ajax({
-                type:'get',
-                success:function(reponse){
+                type: 'get',
+                success: function (reponse) {
                     $("#main-content").css('background-image', 'none');
                     $(".nav-link").removeClass("active");
                     $(".Publishtions").addClass("active");
+                    $("#content").empty();
 
-                    document.getElementById("HeadPage").innerHTML= 'Courses You have Published !' ;
+                    document.getElementById("HeadPage").innerHTML = 'Courses You have Published !';
+
+                    mystr = `<table class="table" id='items'>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Sort Desc</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead><tbody>
+`
+                    $("#content").append(mystr);
+
+                    {% for i in course %}
+                        mystr = `
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ i.course_name }}</td>
+      <td>{{ i.short_desc }}</td>
+      <td>{{ i.cost }}</td>
+    </tr>`
+                        $('#items').append(mystr);
+                    {% endfor %}
 
 
+                    mystr = '</tbody></table>'
+                    $("#content").append(mystr);
                 }
             });
         }
 
-        $('.Publishtions').click(function (event){
+        $('.Publishtions').click(function (event) {
             event.preventDefault();
             changeContentPublishtions();
         });
 
-        function changeContentEarnings(){
+        function changeContentEarnings() {
             $.ajax({
-                type:'get',
-                success:function(reponse){
+                type: 'get',
+                success: function (reponse) {
                     $("#main-content").css('background-image', 'none');
                     $(".nav-link").removeClass("active");
                     $(".Earnings").addClass("active");
 
-                    document.getElementById("HeadPage").innerHTML= 'Your Earnings !' ;
+                    document.getElementById("HeadPage").innerHTML = 'Your Earnings !';
 
 
                 }
             });
         }
 
-        $('.Earnings').click(function (event){
+        $('.Earnings').click(function (event) {
             event.preventDefault();
             changeContentEarnings();
         });
 
-        function changeContentPublish(){
+        function changeContentPublish() {
             $.ajax({
-                type:'get',
-                success:function(reponse){
+                type: 'get',
+                success: function (reponse) {
                     $("#main-content").css('background-image', 'none');
                     $(".nav-link").removeClass("active");
                     $(".Publish").addClass("active");
+                    $("#content").empty();
+                    const csrfToken = Cookies.get('csrftoken');
+                    mystr = `<form method="post" id="contributeform"><input type="hidden" name="csrfmiddlewaretoken" value=${csrfToken}> <div class="form-row"><input type="hidden" id="social_id" name="social_id" value="{{ user.socialaccount_set.all.0.extra_data.id }}">
+                    <input type="hidden" id="social_email" name="social_email" value="{{ user.socialaccount_set.all.0.extra_data.email }}"><label for="basic-url">Course Material URL</label>
+<div class="input-group mb-3 required">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+  </div>
+  <input type="text" id="contenturl" name="contenturl" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
+</div>
 
-                    document.getElementById("HeadPage").innerHTML= 'New Publishtion !' ;
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Course Name</span>
+  </div>
+  <input type="text" id="coursename" name="coursename" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+</div>
 
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$(Expected cost)</span>
+  </div>
+  <input type="text" id="cost" name="cost" class="form-control" aria-label="Expected cost (to the nearest dollar)" required>
+  <div class="input-group-append">
+    <span class="input-group-text">.00</span>
+  </div>
+</div>
+
+<div class="input-group input-group-lg mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg">Short Description</span>
+  </div>
+  <input type="text" id="shortdesc" name="shortdesc" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+</div>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Full Description</span>
+  </div>
+  <textarea class="form-control" id="fulldesc" name="fulldesc" aria-label="With textarea" style="height: 281px;" required></textarea>
+</div>
+<button type="submit" class="btn btn-primary" onclick="ready()">Submit</button>
+</div>
+</form>`
+
+                    $("#content").append(mystr);
+                    document.getElementById("HeadPage").innerHTML = 'New Publishtion !';
 
                 }
             });
         }
 
-        $('.Publish').click(function (event){
+        $('.Publish').click(function (event) {
             event.preventDefault();
             changeContentPublish();
         });
 
 
+function ready() {
+    console.log("hee;")
+    $('#contributeform').submit(function (event) {
+        event.preventDefault();
+        var formData = {
+            'social_id' : $('input[name=social_id]').val(),
+            'social_email':$('input[name=social_email]').val(),
+            'contenturl': $('input[name=contenturl]').val(),
+            'coursename': $('input[name=coursename]').val(),
+            'cost': $('input[name=cost]').val(),
+            'shortdesc': $('input[name=shortdesc]').val(),
+            'fulldesc': $('textarea:input[name=fulldesc]').val(),
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/learnera/dashboard/{{ user.socialaccount_set.all.0.extra_data.id }}',
+            data: formData,
+            encode: true
+        }).done(function (data) {
+            alert("Your contribution has been submitted for review!");
+            document.getElementById("contributeform").reset();
+        });
+    });
+
+}
 
 
-    </script>
-{% endblock %}
+        </script>
+    {% endblock %}

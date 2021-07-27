@@ -227,7 +227,7 @@
 
         function updateCart(cart) {
             for (var item in cart) {
-                document.getElementById('div' + item).innerHTML = "<a href='#'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>"
+                document.getElementById('div' + item).innerHTML = "<a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>"
             }
 
             localStorage.setItem('cart', JSON.stringify(cart));
@@ -247,7 +247,7 @@
                 tot_cost = tot_cost + parseInt(document.getElementById('price' + item).innerHTML);
             }
             popStr = popStr + "<hr>" + "Total Amount : Rs " + tot_cost ;
-            popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>";
+            popStr = popStr + "</div> <a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>";
             document.getElementById('popcart').setAttribute('data-content', popStr);
             //var myPopover = document.getElementById('popcart')
             //myPopover.show();
