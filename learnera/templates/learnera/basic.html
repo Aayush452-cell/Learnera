@@ -243,11 +243,6 @@
                     <a href="/learnera/dashboard/{{ user.socialaccount_set.all.0.extra_data.id }}"><img src="{{ user.socialaccount_set.all.0.extra_data.picture }}" class="avatar"> </a>
                 {% else %}
 
-                    <!--Log In modal-->
-                    <button type="submit" class="btn btn-outline-success my-sm-2 mr-1" data-toggle="modal"
-                            style="background-color: hsl(9, 87%, 57%);" data-target="#loginModal">
-                        Login
-                    </button>
 
 
 
@@ -279,77 +274,6 @@
                                         </a>
                                     </div>
 
-
-                                    <form action="/signup" method='post'>
-                                        <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username"
-                                                   placeholder="Choose a unique username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="fname">First Name</label>
-                                            <input type="text" class="form-control" id="fname" name="fname"
-                                                   placeholder="Enter Your First Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="lname">Last Name</label>
-                                            <input type="text" class="form-control" id="lname" name="lname"
-                                                   placeholder="Enter Your Last Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email address</label>
-                                            <input type="email" class="form-control" id="email" name="email"
-                                                   placeholder="name@example.com">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pass1">Choose a password</label>
-                                            <input type="password" class="form-control" id="pass1" name="pass1"
-                                                   placeholder="Choose Your Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pass2">Confirm Password</label>
-                                            <input type="password" class="form-control" id="pass2" name="pass2"
-                                                   placeholder="Enter your password again">
-                                        </div>
-
-
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="background-color: rgb(235, 243, 255);">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="loginusername"
-                                                   name="loginusername"
-                                                   placeholder="Choose a unique username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pass">Enter your password </label>
-                                            <input type="password" class="form-control" id="pass" name="pass"
-                                                   placeholder="Enter your password ">
-                                        </div>
-
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                 </div>
