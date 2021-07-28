@@ -243,44 +243,10 @@
                     <a href="/learnera/dashboard/{{ user.socialaccount_set.all.0.extra_data.id }}"><img src="{{ user.socialaccount_set.all.0.extra_data.picture }}" class="avatar"> </a>
                 {% else %}
 
-
-
-
-                    <!-- Button trigger modal -->
-                    <button type="submit" class="btn btn-outline-success my-sm-2"
-                            style="background-color: hsl(9, 87%, 57%);"
-                            data-toggle="modal" data-target="#signupModal">
-                        SignUp
-                    </button>
-
-                    <!-- Sign Up modal -->
-                    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="background-color: rgb(235, 243, 255)">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="signupModalTitle">SignUp Here</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <div class="modal-body">
-                                    <div>
-
-
-                                        <a href="{% provider_login_url 'google' %}">
-                                            <img src="{% static 'learnera/google.png' %}" class="google-sign" alt=""/>
-                                        </a>
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <a href="{% provider_login_url 'google' %}">
+                        <img src="{% static 'learnera/signin.png' %}" alt="" style="width: 160px;height: 50px;"/>
+                    </a>
+    
                 {% endif %}
             </ul>
         </div> <!-- navbar-collapse.// -->
