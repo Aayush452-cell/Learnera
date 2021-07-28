@@ -141,7 +141,7 @@ def checkout(request):
 
         amount=int(amount)
 
-        callback_url = 'http://'+str(get_current_site(request))+"/learnera/handlerequest/"+str(order.order_id)
+        callback_url = 'http://'+str(https://learnerra.herokuapp.com/)+"/learnera/handlerequest/"+str(order.order_id)
         print(callback_url)
 
         razorpay_order=razorpay_client.order.create(dict(amount=amount*100,currency=order_currency,receipt=str(order.order_id),payment_capture='0'))
