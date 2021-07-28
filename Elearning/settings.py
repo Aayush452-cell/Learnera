@@ -25,7 +25,7 @@ SECRET_KEY = '7$p219o+^o&q*mn6aofu&rmc)mlg)xk6nl(&vz!x6u7q-_*zrv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','learnerra.herokuapp.com']
 
 # Application definition
 
