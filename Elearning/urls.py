@@ -25,4 +25,4 @@ urlpatterns = [
     path('learnera/', include('learnera.urls')),
     path('accounts/', include('allauth.urls')),
     path('grappelli/', include('grappelli.urls')),   # grappelli URLS
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
