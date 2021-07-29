@@ -1,0 +1,284 @@
+{% extends 'learnera/basic.html' %}
+{% load static %}
+{% block css %}
+
+    .btn-outline-success {
+    color: #fff;
+    border-color: #28a745;
+    }
+
+    .card-title-text-img {
+    padding-left: 38%
+    }
+
+    .card-title-text-img-button {
+    padding-left: 38%;
+    }
+
+    .card-title-text-container {
+    padding-bottom: 10%
+    }
+
+
+    /* ============ mobile view ============ */
+    @media (max-width: 991px) {
+    .navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse {
+    max-height: 90vh;
+    margin-top: 10px;
+    }
+
+    html,
+    body {
+    overflow-x: hidden;
+    }
+
+    .google-sign {
+    max-width: 300px;
+    margin-left: 45px;
+    }
+
+    .navbar-brand img {
+    height: auto;
+    width: auto;
+    max-height: 41px;
+    max-width: 79px;
+    }
+
+
+    .card-title-text-img {
+    padding-left: 10%
+    }
+
+    .ds {
+    width: 100%;
+    height: 444px;
+    }
+
+    .navbar-collapse {
+
+
+    top: 4rem;
+    right: 2rem;
+    background-color: #2f3542;
+    width: 15rem;
+
+    z-index: 1;
+    position: absolute;
+    }
+
+    .modal-backdrop {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    }
+
+    .mid {
+    background-image: url("{% static 'learnera/a1.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    }
+    }
+
+    .col-md-3 {
+    display: inline-block;
+    margin-left: -4px;
+    }
+
+    .carousel-indicators .active {
+    background-color: blue;
+    }
+
+    .col-md-3 img {
+
+    height: 200px;
+    }
+
+    body .carousel-indicator li {
+    background-color: blue;
+    }
+
+    body .carousel-indicators {
+    bottom: 0;
+    }
+
+    body .carousel-control-prev-icon,
+    body .carousel-control-next-icon {
+    background-color: blue;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+    top: auto;
+    bottom: auto;
+    padding-top: 222px;
+    }
+
+    body .no-padding {
+    padding-left: 0;
+    padding-right: 0;
+    }
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="container">
+
+        <!--Slideshow starts here -->
+        {% for course, range, nSlides in courses %}
+            <h5 class="my-4">Search Results - {{ course.0.category }}</h5>
+            <div class="row">
+                <div id="demo{{ forloop.counter }}" class="col carousel slide my-3" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo{{ forloop.counter }}" data-slide-to="0" class="active"></li>
+
+                        {% for i in range %}
+                            <li data-target="#demo{{ forloop.parentloop.counter }}" data-slide-to="{{ i }}"></li>
+                        {% endfor %}
+                    </ul>
+
+
+                    <div class="container carousel-inner no-padding">
+
+                        <div class="carousel-item active">
+
+
+                            {% for i in course %}
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src='/media/{{ i.image }}' class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title" id="namecr{{ i.id }}">{{ i.course_name }}</h5>
+                                            <h6 class="card-title">Price : <span
+                                                    id="pricecr{{ i.id }}">{{ i.fee }}</span></h6>
+                                            <p class="card-text">{{ i.sort_desc | safe }}</p>
+                                            <span id="divcr{{ i.id }}" class="divcr">
+                                                <button id="cr{{ i.id }}"
+                                                        class="btn btn-primary cart">Add To Cart</button>
+                                            </span>
+                                            <a href="/learnera/CourseDetail/{{ i.id }}">
+                                                <button id="qv{{ i.id }}" class="btn btn-primary cart">Details
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                                    </div>
+                                    <div class="carousel-item">
+                                {% endif %}
+
+                            {% endfor %}
+                            </div>
+
+
+                    </div>
+                </div>
+                <!-- left and right controls for the slide -->
+                <a class="carousel-control-prev" href="#demo{{ forloop.counter }}" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo{{ forloop.counter }}" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a class="carousel-control-prev " href="#demo" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+{% endblock %}
+
+<script>
+
+    {% block js %}
+
+        {%if msg|length != 0 %}
+       console.log("hft")
+        alert('{{msg}}');
+        window.location.href="/learnera/"
+       {%endif%}
+
+        console.log("working");
+
+        if (localStorage.getItem('cart') == null) {
+            var cart = {};
+            $('#popcart').popover();
+        } else {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            document.getElementById('cart').innerHTML = Object.keys(cart).length;
+            updateCart(cart);
+        }
+
+        $('.divcr').on('click', 'button.cart', function () {
+            var idstr = this.id.toString();
+            name = document.getElementById('name' + idstr).innerHTML;
+            price = document.getElementById('price' + idstr).innerHTML;
+            cart[idstr] = [name, price];
+            updateCart(cart);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        });
+
+        function updateCart(cart) {
+            for (var item in cart) {
+                document.getElementById('div' + item).innerHTML = "<a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>"
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById('cart').innerHTML = Object.keys(cart).length;
+            updatePopover(cart);
+        }
+
+        function updatePopover(cart) {
+            var popStr = "";
+            popStr = popStr + "<h5> Courses you have in your cart right now ! </h5><div class='mx-2 my-2'>";
+            var i = 1;
+            var tot_cost = 0;
+            for (var item in cart) {
+                popStr = popStr + "<b>" + i + "</b>.";
+                popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "...   Rs " + document.getElementById('price' + item).innerHTML + '<br>';
+                i = i + 1;
+                tot_cost = tot_cost + parseInt(document.getElementById('price' + item).innerHTML);
+            }
+            popStr = popStr + "<hr>" + "Total Amount : Rs " + tot_cost ;
+            popStr = popStr + "</div> <a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>";
+            document.getElementById('popcart').setAttribute('data-content', popStr);
+            //var myPopover = document.getElementById('popcart')
+            //myPopover.show();
+
+            document.getElementById('popcart').click();
+
+            $('#popcart').popover();
+        }
+         function clearCart() {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            for (var item in cart) {
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>';
+            }
+            localStorage.clear();
+            cart = {};
+            updateCart(cart);
+        }
+
+        if(flag == true){
+            flag = false;
+            clearCart();
+        }
+
+
+        </script>
+
+    {% endblock %}
