@@ -209,3 +209,33 @@ def dashboard(request,id):
     Profile = profile.objects.filter(u_id=id)
     order = Orders.objects.filter(email=Profile[0]).exclude(payment_status=2)
     return render(request,'learnera/dashboard.html',{'course':course,'order':order})
+
+def searchMatch(query,item):
+    if query.lower() in item.course_name.lower() or query.lower() in item.category.lower() or query.lower() in item.subcategory.lower() or query.lower() in item.sort_desc.lower():
+        return True
+    else:
+        return False
+
+
+def search(request):
+    query = request.GET.get('search')
+    courses = []
+    course = allcourse.objects.values('category', 'id')
+    cours = {item['category'] for item in course}
+    for cs in cours:
+        cst = allcourse.objects.filter(category=cs)
+        csts = [item for item in cst if searchMatch(query, item)]
+        n = len(csts)
+        nSlides = n // 4 + ceil((n / 4) - (n // 4))
+        if len(csts) != 0:
+            courses.append([csts, range(1, nSlides), nSlides])
+    params = {'courses': courses, "msg": ""}
+    print(courses)
+    if len(courses) == 0 or len(query) < 4:
+        params = {'msg': "Please make sure to enter relevant search query"}
+    return render(request, 'learnera/search.html', params)
+
+
+
+
+
