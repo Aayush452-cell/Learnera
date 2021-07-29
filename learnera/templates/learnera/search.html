@@ -234,7 +234,10 @@
 
         function updateCart(cart) {
             for (var item in cart) {
-                document.getElementById('div' + item).innerHTML = "<a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>"
+
+                let bt= document.getElementById('div' + item) ;
+                if(bt)
+                    bt.innerHTML = "<a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>"
             }
 
             localStorage.setItem('cart', JSON.stringify(cart));
@@ -243,18 +246,20 @@
         }
 
         function updatePopover(cart) {
-            var popStr = "";
-            popStr = popStr + "<h5> Courses you have in your cart right now ! </h5><div class='mx-2 my-2'>";
             var i = 1;
-            var tot_cost = 0;
-            for (var item in cart) {
+            var popStr = "";
+            var tot_cost=0;
+            for (item in cart) {
+                let name = cart[item][0];
+                let price = cart[item][1];
+                console.log(name);
                 popStr = popStr + "<b>" + i + "</b>.";
-                popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "...   Rs " + document.getElementById('price' + item).innerHTML + '<br>';
+                popStr = popStr + name + "...   Rs " + price + '<br>';
                 i = i + 1;
-                tot_cost = tot_cost + parseInt(document.getElementById('price' + item).innerHTML);
+                tot_cost = tot_cost + parseInt(price);
             }
             popStr = popStr + "<hr>" + "Total Amount : Rs " + tot_cost ;
-            popStr = popStr + "</div> <a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>";
+            popStr = popStr + "<br> </div> <a href='/learnera/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>";
             document.getElementById('popcart').setAttribute('data-content', popStr);
             //var myPopover = document.getElementById('popcart')
             //myPopover.show();
@@ -266,7 +271,9 @@
          function clearCart() {
             cart = JSON.parse(localStorage.getItem('cart'));
             for (var item in cart) {
-                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>';
+                let bt = document.getElementById('div' + item)
+                if(bt)
+                    bt .innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>';
             }
             localStorage.clear();
             cart = {};
