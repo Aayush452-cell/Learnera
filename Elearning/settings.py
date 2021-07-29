@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7$p219o+^o&q*mn6aofu&rmc)mlg)xk6nl(&vz!x6u7q-_*zrv'
+SECRET_KEY = '#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -166,5 +166,5 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-razorpay_id = "rzp_test_cr2s5H09JEA7kT"
-razorpay_account_id = "k56k4nryNd6oDuY4oJ9TxyqP"
+razorpay_id = "#"
+razorpay_account_id = "#"
