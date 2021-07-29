@@ -212,8 +212,8 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                <form action="/learnera/search/" class="form-inline my-2 my-lg-0" method="get">{% csrf_token %}
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" id="search" aria-label="Search"/>
                     <button class="btn btn-outline-success my-2 my-sm-0" style="background: hsl(9, 87%, 57%)"
                             type="submit">
                         Search
@@ -293,7 +293,6 @@
     // DOMContentLoaded  end
 
 
-        $('#popcart').popover();
         showpop();
 
 
