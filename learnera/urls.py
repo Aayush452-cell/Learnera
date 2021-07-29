@@ -15,4 +15,5 @@ urlpatterns = [
     path('checkout/',views.checkout,name='checkout'),
     path('handlerequest/<str:id>',views.handlerequest,name='handlerequest'),
     path('logout', LogoutView.as_view(), name="logout"),
+    path('search/',views.search,name='search'),
 ]
